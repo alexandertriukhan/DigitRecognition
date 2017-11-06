@@ -1,8 +1,8 @@
 //https://github.com/vivin/DigitRecognizingNeuralNetwork
 package utils
 
-class DigitImage(private val label: Int, imgData: ByteArray) {
-    val imgData: DoubleArray = DoubleArray(imgData.size, { i -> (imgData[i].toInt() and 0xFF).toDouble() })
+class DigitImage(var label: Int, imgData: ByteArray) {
+    val imgData: IntArray = IntArray(imgData.size, { i -> (imgData[i].toInt() and 0xFF) })
 
     init {
         otsu()
@@ -57,7 +57,7 @@ class DigitImage(private val label: Int, imgData: ByteArray) {
         }
         i = 0
         while (i < imgData.size) {
-            imgData[i] = if (imgData[i] <= threshold) 0.0 else 1.0
+            imgData[i] = if (imgData[i] <= threshold) 0 else 1
             i++
         }
     }

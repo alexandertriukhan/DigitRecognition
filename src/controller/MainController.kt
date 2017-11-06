@@ -4,6 +4,8 @@ import javafx.fxml.FXML
 import javafx.scene.canvas.Canvas
 import javafx.scene.canvas.GraphicsContext
 import javafx.scene.control.Button
+import core.Main
+import javafx.scene.control.ProgressBar
 
 class MainController {
 
@@ -12,6 +14,12 @@ class MainController {
 
     @FXML
     lateinit var clearButton: Button
+
+    @FXML
+    lateinit var studyButton: Button
+
+    @FXML
+    lateinit var progressBar: ProgressBar
 
     lateinit var gc: GraphicsContext
 
@@ -31,6 +39,11 @@ class MainController {
 
         clearButton.setOnAction {
             gc.clearRect(0.0,0.0,280.0,280.0)
+        }
+
+        studyButton.setOnAction {
+            val m = Main()
+            m.studyMnist()
         }
     }
 
