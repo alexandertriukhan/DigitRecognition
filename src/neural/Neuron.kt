@@ -3,10 +3,8 @@ package neural
 import java.util.*
 
 class Neuron {
-    //public val string : data;
     private var weight : IntArray = IntArray(784) // веса нейронов
-    //private val minimum = 50 // порог
-    //private val size = 784
+    private val minimum = 55 // порог
 
     init {
         randomizeWeights()
@@ -17,7 +15,11 @@ class Neuron {
         for (i in weight.indices) {
                 power += weight[i] * input[i]
             }
-        return power// >= minimum ? 1 : 0
+        if (power >= minimum) {
+            return 1
+        } else {
+            return 0
+        }
     }
 
     fun transfer(input : IntArray) : Int {
